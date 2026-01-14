@@ -6,13 +6,11 @@ calcularValorTotal = function () {
     let porcentajeDescuento= recuperarInt("txtPorcentajeDescuento");
 
     //variables para almacenar los retornos de las funciones
-    let valorSubtotal= calcularSubtotal(precioProducto, cantidad);
-    mostrarTexto("lblSubtotal", valorSubtotal);
+    
 
-    let valorDescuento = calcularValorDescuento(valorSubtotal, porcentajeDescuento)
-    mostrarTexto("lblDescuento", valorDescuento);
+  
 
-    let valorIVA;
+   
     let valorTotal;
 
     //1. Recuperar el nombre del producto como String
@@ -24,6 +22,8 @@ calcularValorTotal = function () {
     // Tomar en cuenta el orden de como pasa los parametos de la funcion y colocar bien
     // los parametros cuando invoca la funcion.
     //5. Mostrar valorSubtotal en el componente lblSubtotal
+    let valorSubtotal= calcularSubtotal(precioProducto, cantidad);
+    mostrarTexto("lblSubtotal", valorSubtotal);
     // Utilizar mostrarTexto
         /*
         Caso de prueba: 
@@ -34,6 +34,8 @@ calcularValorTotal = function () {
      */
     //6. Invocar a calcularValorDescuento y lo que devuelve guardar en la variable valorDescuento
     //7. Mostrar el resultado en el componente lblDescuento
+    let valorDescuento = calcularValorDescuento(valorSubtotal, porcentajeDescuento);
+    mostrarTexto("lblDescuento", valorDescuento);
     /*
         Caso de prueba: 
             - cantidad: 10 
@@ -44,7 +46,10 @@ calcularValorTotal = function () {
      */
     //8. Invocar a calcularIVA y lo que devuelve guardar en la variable valorIVA
     // El IVA debe calcularse sobre el valor del subtotal menos el descuento
-    //9. Mostrar el resultado en el componente lblValorIVA    
+    //9. Mostrar el resultado en el componente lblValorIVA  
+    let baseIVA = valorSubtotal - valorDescuento;
+    let valorIVA= calcularIva(baseIVA);
+    mostrarTexto("lblValorIVA", valorIVA);
         /*
             Caso de prueba: 
                 - cantidad: 10 
