@@ -12,20 +12,27 @@ saludar=function(){
     mostrarTexto("lblResultado", mensajeBienvenida);
 
     mostrarImgen("imgSaludo", "./imagenes/saludo.gif");
+
+    mostrarTextoEnCaja("txtNombre", "");
 }
 
 mostrarImgen=function(idComponente,rutaImagen){
     let componente;
     componente=document.getElementById(idComponente);
     componente.src= rutaImagen;
-
-
 }
 
 mostrarTexto=function(idComponente,mensaje){
     let componente;
     componente=document.getElementById(idComponente);
     componente.innerText=mensaje;
+
+}
+
+mostrarTextoEnCaja = function(idComponente, mensaje){
+     let componente;
+    componente=document.getElementById(idComponente);
+    componente.value=mensaje;
 
 }
 
