@@ -11,7 +11,7 @@ calcularValorTotal = function () {
   
 
    
-    let valorTotal;
+  
 
     //1. Recuperar el nombre del producto como String
     //2. Recuperar el precio como float
@@ -67,6 +67,9 @@ calcularValorTotal = function () {
         */
     //10. Invocar a calcularTotal y lo que devuelve guardar en la variable valorTotal
     //11. Mostrar el resultado en el componente lblTotal
+    let valorTotal= calcularTotal(valorSubtotal, valorDescuento, valorIVA);
+    mostrarTexto("lblTotal", valorTotal);
+
     /*
         Caso de prueba: 
             - cantidad: 10
@@ -83,6 +86,8 @@ calcularValorTotal = function () {
        */
             
     //12. Mostrar un resumen en el componente lblResumen, si no existe debe agregarlo
+    let resumen = "valor a pagar por " +cantidad+ " " + nombreProducto+ " con " + porcentajeDescuento+ "% de descuento: es $" +valorTotal;
+    mostrarTexto("lblResumen", resumen);
     /*
         Ejemplo: 
             Valor a pagar por 20 cerveza corona con 10% de descuento: USD 48.75
