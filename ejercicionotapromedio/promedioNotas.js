@@ -11,10 +11,21 @@ calcularPromedioNotas=function(){
 
     cambiarTexto("lblPromedio", promedio.toFixed(2));
 
-    if(promedio>7){
-        cambiarImagen("lblImagen", "exito.gif");
-    }else{
-        cambiarImagen("lblImagen", "fracaso.gif")
+    if(promedio >0 && promedio <5){
+        cambiarTexto("lblResultado", "REPROBADO");
+        cambiarImagen("lblImagen", "reprobado.gif");
+
+    }else if (promedio>=5 && promedio <=8){
+        cambiarTexto("lblResultado", "BUEN TRABAJO");
+        cambiarImagen("lblImagen", "buentrabajo.gif");
+
+    }else if (promedio >8 && promedio <=10){
+        cambiarTexto("lblResultado", "EXCELENTE");
+        cambiarImagen("lblImagen", "excelente.gif");
+    }
+    else{
+        cambiarTexto("lblResultado", "DATOS INCORRECTOS");
+        cambiarImagen("lblImagen", "datosincorrectos.gif")
     }
 
 }
