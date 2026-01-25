@@ -1,11 +1,11 @@
 calcularValorTotal = function () {
 
-    // 1️⃣ Recuperar valores (como texto)
+    // Recuperar valores (como texto)
     let producto = document.getElementById("txtProducto").value;
     let cantidadTxt = document.getElementById("txtCantidad").value;
     let precioTxt = document.getElementById("txtPrecio").value;
 
-    // 2️⃣ Validaciones
+    //  Validaciones
     let errorProducto = esProductoValido(producto);
     let errorCantidad = esCantidadValida(cantidadTxt);
     let errorPrecio = esPrecioValido(precioTxt);
@@ -14,22 +14,22 @@ calcularValorTotal = function () {
     document.getElementById("lblError2").innerText = errorCantidad;
     document.getElementById("lblError3").innerText = errorPrecio;
 
-    // ⛔ Si hay errores, NO calcular
+    // Si hay errores, NO calcular
     if (errorProducto !== "" || errorCantidad !== "" || errorPrecio !== "") {
         return;
     }
 
-    // 3️⃣ Convertir a números (ya validados)
+    //  Convertir a números (ya validados)
     let cantidad = Number(cantidadTxt);
     let precio = Number(precioTxt);
 
-    // 4️⃣ Cálculos USANDO TUS FUNCIONES
+    // Cálculos USANDO TUS FUNCIONES
     let subtotal = calcularSubtotal(precio, cantidad);
     let descuento = calcularDescuentoPorVolumen(subtotal, cantidad);
     let iva = calcularIva(subtotal - descuento);
     let total = calcularTotal(subtotal, descuento, iva);
 
-    // 5️⃣ Mostrar resultados
+    //  Mostrar resultados
     mostrarTexto("lblSubtotal", subtotal.toFixed(2));
     mostrarTexto("lblDescuento", descuento.toFixed(2));
     mostrarTexto("lblValorIva", iva.toFixed(2));
