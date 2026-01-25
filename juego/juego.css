@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+img {
+    cursor: pointer;
+    margin: 10px;
+    transition: transform 0.2s;
+}
+
+img:hover {
+    transform: scale(1.1);
+}
+
+#lblResultado {
+    color: #333;
+    font-weight: bold;
+}
+
+.marcador {
+    font-size: 1.2em;
+    margin: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
