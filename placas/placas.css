@@ -1,0 +1,72 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Cambia 'carro.png' por la ruta de tu imagen de fondo */
+    background-image: url('carro.png'); 
+    background-size: cover;           /* Hace que la imagen cubra toda la pantalla */
+    background-position: center;      /* Centra la imagen */
+    background-attachment: fixed;      /* Evita que el fondo se mueva al hacer scroll */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;                    /* Usa todo el alto de la ventana */
+}
+
+
+/* 3. Estilo del título */
+.titulo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #f8ce2a;
+    margin-bottom: 20px;
+}
+
+/* 4. Estilo para los inputs y botones */
+input[type="text"] {
+    width: 80%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Botón Validar */
+button[onclick="validarPlaca()"] {
+    background-color: #27ae60;
+    color: white;
+}
+
+/* Botón Limpiar */
+button[onclick="limpiar()"] {
+    background-color: #b64136;
+    color: white;
+}
+
+/* 5. Etiquetas de resultados */
+.lbl{
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.error {
+    color: #fcf3f2;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.text{
+    color: #f9f9f9;
+}
