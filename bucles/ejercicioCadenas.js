@@ -1,49 +1,72 @@
-ejecutarPrueba1=function(){
+ejecutarPrueba1 = function () {
     let mensaje;
-    mensaje=recuperarTexto("txtCadena");
+    mensaje = recuperarTexto("txtCadena");
     recorrerCadena(mensaje);
 }
 
-recorrerCadena=function(cadena){
+recorrerCadena = function (cadena) {
     let caracter;
 
 
-    for(let posicion=0; posicion<cadena.length;posicion++){
-        caracter=cadena.charAt(posicion);
-        console.log("Caracter " + caracter+ " posicion "+ posicion);
+    for (let posicion = 0; posicion < cadena.length; posicion++) {
+        caracter = cadena.charAt(posicion);
+        console.log("Caracter " + caracter + " posicion " + posicion);
 
     }
 
-     for(let posicion=0; posicion<=cadena.length -1;posicion++){
-        caracter=cadena.charAt(posicion);
-        console.log("CARACTER " + caracter+ " posicion "+ posicion);
+    for (let posicion = 0; posicion <= cadena.length - 1; posicion++) {
+        caracter = cadena.charAt(posicion);
+        console.log("CARACTER " + caracter + " posicion " + posicion);
 
     }
 }
 
-ejecutarPrueba2 = function() {
+ejecutarPrueba2 = function () {
     let mensaje;
     mensaje = recuperarTexto("txtCadena");
     invertirCadena(mensaje);
 }
 
-invertirCadena = function(cadena) {
-    let caracter;
-    let resultadoInvertido = ""; 
+invertirCadena = function (cadena) {
+    let letra;
+    let invertida = "";
 
-    // Recorremos la cadena desde la última posición hacia la 0
-    // La última posición siempre es length - 1
-    for (let posicion = cadena.length - 1; posicion >= 0; posicion--) {
-        caracter = cadena.charAt(posicion);
-        
-        // Vamos acumulando los caracteres
-        resultadoInvertido += caracter;
-        
-        // Opcional: ver el proceso en consola
-        console.log("Caracter: " + caracter + " en posición: " + posicion);
+    for (let i = cadena.length - 1; i >= 0; i--) {
+        letra = cadena.charAt(i);
+        invertida = invertida + letra;
+    }
+    return invertida;
+}
+
+buscarLetra = function () {
+    let letraIterada;
+    let existeLetra = false;
+    for (let i = 0; i < cadena.length; i++) {
+        letraIterada = cadena.charAt(i);
+        if (letraIterada == letra) {
+            existeLetra == true;
+        }
+
+    }
+    if (existeLetra == true) {
+        return true;
+
+    } else {
+        return false;
     }
 
-    // Mostramos el resultado en pantalla (asumiendo que tienes un elemento con este ID)
-    mostrarTexto("lblResultado", resultadoInvertido);
-    
+}
+
+contraMayusculas = function () {
+    for (let i = 0; i < cadena.length; i++) {
+        letra = cadena.charAt(i);
+        if (esMayuscula(letra)) {
+            contadorMayusculas++;
+
+        }
+
+    }
+    console.log(contadorMayusculas);
+
+
 }
