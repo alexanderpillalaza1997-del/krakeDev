@@ -23,7 +23,6 @@ guardarPalabra = function () {
 
     if (valor.length == 5) {
         esValida = false;
-        console.log("no")
     } else {
         for (let i = 0; i < valor.length; i++) {
             if (!esMayuscula(valor.charAt(i))) {
@@ -33,4 +32,14 @@ guardarPalabra = function () {
             }
         }
     }
+
+    if (esValida) {
+        palabraSecreta = valor;
+        console.log("Palabra guardada: " + palabraSecreta);
+    } else {
+        alert("Debe ingresar una palabra de 5 letras mayúsculas.");
+    }
+
 }
+
+
