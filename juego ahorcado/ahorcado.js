@@ -21,7 +21,7 @@ guardarPalabra = function () {
     let valor = input.value;
     let esValida = true;
 
-    if (valor.length == 5) {
+    if (valor.length !== 5) {
         esValida = false;
     } else {
         for (let i = 0; i < valor.length; i++) {
@@ -58,4 +58,38 @@ validar= function(letra) {
             coincidencias++; // Incremento global para PASO 5
         }
     }
+
+    if (letrasEncontradas === 0) {
+        alert("LA LETRA NO ES PARTE DE LA PALABRA");
+        errores++;
+        mostrarAhorcado(); // PASO 6
+    }
+}
+ 
+
+
+function ingresarLetra() {
+    let inputLetra = document.getElementById("txtLetra");
+    let letra = inputLetra.value;
+
+    if (esMayuscula(letra)) {
+        intentos++; // PASO 5
+        validar(letra);
+        
+        // PASO 5: Verificación de victoria o derrota
+        if (coincidencias === 5) {
+            // PASO 7: Imagen ganador
+            document.getElementById("ahorcadoImagen").src = "ganador.gif";
+            alert("HA GANADO");
+        } else if (intentos === 10) {
+            // PASO 7: Imagen gameOver
+            document.getElementById("ahorcadoImagen").src = "gameOver.gif";
+            alert("HA PERDIDO");
+        }
+    } else {
+        alert("SOLO SE ACEPTAN MAYUSCULAS");  
+    }
+}
+
+
 
