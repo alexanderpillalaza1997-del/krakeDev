@@ -93,3 +93,30 @@ function ingresarLetra() {
 
 
 
+function mostrarAhorcado() {
+    let img = document.getElementById("ahorcadoImagen");
+    if (errores === 1) {
+        img.src = "Ahorcado_01.png";
+    } else if (errores === 2) {
+        img.src = "Ahorcado_02.png";
+    } else if (errores === 3) {
+        img.src = "Ahorcado_03.png";
+    } else if (errores === 4) {
+        img.src = "Ahorcado_04.png";
+    } else if (errores === 5) {
+        img.src = "Ahorcado_05.png";
+    } else if (errores === 6) {
+        img.src = "Ahorcado_06.png";
+    } else if (errores === 7) {
+        img.src = "Ahorcado_06.png";
+    } else if (errores === 8) {
+        img.src = "Ahorcado_06.png";
+    } else if (errores === 9) {
+        img.src = "Ahorcado_06.png";
+    }
+}
+
+// ASIGNACIÓN DE EVENTOS (Recomendado para que el botón VALIDAR funcione)
+window.onload = function() {
+    document.getElementById("btnValidar").onclick = ingresarLetra;
+}
