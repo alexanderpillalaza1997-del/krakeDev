@@ -42,4 +42,20 @@ guardarPalabra = function () {
 
 }
 
+mostrarLetra = function(letra, posicion) {
+    let idDiv = "div" + posicion;
+    let componente = document.getElementById(idDiv);
+    componente.innerText = letra;
+}
+
+validar= function(letra) {
+    let letrasEncontradas = 0;
+
+    for (let i = 0; i < palabraSecreta.length; i++) {
+        if (palabraSecreta.charAt(i) === letra) {
+            mostrarLetra(letra, i);
+            letrasEncontradas++;
+            coincidencias++; // Incremento global para PASO 5
+        }
+    }
 
