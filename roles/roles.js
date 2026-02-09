@@ -79,6 +79,94 @@ ejecutarNuevo = function () {
     esNuevo = true;
 }
 
+buscarEmpleado=function(cedula){
+    for (let i=0; i<empleados.length;i++){
+        if (empleados[i].cedula=== cedula){
+            return empleados[i];
 
+        }
+    }
+    return null;
+
+}
+
+agregarEmpleado = function (empleado) {
+
+    let empleadoExistente = buscarEmpleado(empleado.cedula);
+
+    if (empleadoExistente == null) {
+        empleados.push(empleado);
+        return true;
+    }
+
+    return false;
+}
+
+guardar = function () {
+
+    let cedula = document.getElementById("txtCedula").value;
+    let nombre = document.getElementById("txtNombre").value;
+    let apellido = document.getElementById("txtApellido").value;
+    let sueldoTexto = document.getElementById("txtSueldo").value;
+
+    let sueldo = parseFloat(sueldoTexto);
+
+    // CÉDULA OBLIGATORIA
+    if (cedula == "") {
+        document.getElementById("lblErrorCedula").innerText = "La cedula es obligatoria";
+        return;
+    } else {
+        document.getElementById("lblErrorCedula").innerText = "";
+    }
+
+    // NOMBRE OBLIGATORIO
+    if (nombre == "") {
+        document.getElementById("lblErrorNombre").innerText = "El nombre es obligatorio";
+        return;
+    } else {
+        document.getElementById("lblErrorNombre").innerText = "";
+    }
+
+    // APELLIDO OBLIGATORIO
+    if (apellido == "") {
+        document.getElementById("lblErrorApellido").innerText = "El apellido es obligatorio";
+        return;
+    } else {
+        document.getElementById("lblErrorApellido").innerText = "";
+    }
+
+    // SUELDO OBLIGATORIO
+    if (sueldoTexto == "") {
+        document.getElementById("lblErrorSueldo").innerText = "El sueldo es obligatorio";
+        return;
+    } else {
+        document.getElementById("lblErrorSueldo").innerText = "";
+    }
+
+    // VALIDAR SUELDO
+    if (isNaN(sueldo) || sueldo < 400 || sueldo > 5000) {
+        document.getElementById("lblErrorSueldo").innerText = "Sueldo invalido";
+        return;
+    }
+
+    // GUARDAR
+    if (esNuevo) {
+        let empleado = {};
+        empleado.cedula = cedula;
+        empleado.nombre = nombre;
+        empleado.apellido = apellido;
+        empleado.sueldo = sueldo;
+
+        let agregado = agregarEmpleado(empleado);
+
+        if (agregado) {
+            alert("Empleado guardado correctamente");
+            mostrarEmpleados();
+            deshabilitarFormularioEmpleado();
+        } else {
+            alert("Ya existe un empleado con esa cédula");
+        }
+    }
+}
 
 
