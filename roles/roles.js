@@ -1,5 +1,7 @@
 let esNuevo = false;
 
+let roles = [];
+
 let empleados = [
     { cedula: "1714616123", nombre: "John", apellido: "Cena", sueldo: 500.0 },
     { cedula: "0914632123", nombre: "Luisa", apellido: "Gonzalez", sueldo: 900.0 }
@@ -20,6 +22,9 @@ mostrarOpcionRol = function () {
     mostrarComponente("divRol");
     ocultarComponente("divEmpleado");
     ocultarComponente("divResumen");
+    document.getElementById("btnGuardarRol").disabled = true;
+    document.getElementById("btnGuardarRol").disabled = false;
+
 
 }
 
@@ -239,6 +244,68 @@ calcularRol = function () {
     document.getElementById("infoIESS").innerText = aporte.toFixed(2);
     document.getElementById("infoPago").innerText = totalPagar.toFixed(2);
 }
+
+buscarRol = function (cedula) {
+
+    for (let i = 0; i < roles.length; i++) {
+        if (roles[i].cedula == cedula) {
+            return roles[i];
+        }
+    }
+
+    return null;
+}
+
+agregarRol = function (rol) {
+
+    let rolExistente = buscarRol(rol.cedula);
+
+    if (rolExistente != null) {
+        alert("YA EXISTE UN ROL PARA ESTA CÉDULA");
+        return;
+    }
+
+    roles.push(rol);
+    alert("ROL GUARDADO CORRECTAMENTE");
+}
+
+calcularAporteEmpleador = function (sueldo) {
+    return sueldo * 0.1115;
+}
+
+guardarRol = function () {
+
+    // 1. Tomar datos desde la pantalla (DIVS)
+    let cedula = recuperarTextoDiv("infoCedula");
+    let nombre = recuperarTextoDiv("infoNombre");
+    let sueldo = recuperarFloatDiv("infoSueldo");
+    let valorAPagar = recuperarFloatDiv("infoPago");
+    let aporteEmpleado = recuperarFloatDiv("infoIESS");
+
+    // 2. Calcular aporte del empleador
+    let aporteEmpleador = calcularAporteEmpleador(sueldo);
+
+    // 3. Crear objeto rol vacío
+    let rol = {};
+
+    // 4. Llenar atributos del objeto
+    rol.cedula = cedula;
+    rol.nombre = nombre;
+    rol.sueldo = sueldo;
+    rol.valorAPagar = valorAPagar;
+    rol.aporteEmpleado = aporteEmpleado;
+    rol.aporteEmpleador = aporteEmpleador;
+
+    // 5. Guardar rol
+    agregarRol(rol);
+
+    // 6. Mensaje de éxito
+    alert("Rol guardado correctamente");
+
+    // 7. Deshabilitar botón GUARDAR
+    deshabilitarComponente("btnGuardarRol");
+}
+
 
 
 
