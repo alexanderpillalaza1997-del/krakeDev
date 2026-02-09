@@ -22,8 +22,10 @@ mostrarOpcionRol = function () {
     mostrarComponente("divRol");
     ocultarComponente("divEmpleado");
     ocultarComponente("divResumen");
-    document.getElementById("btnGuardarRol").disabled = true;
-    document.getElementById("btnGuardarRol").disabled = false;
+    habilitarComponente("btnGuardarRol");
+
+    mostrarRoles();
+    mostrarTotales();
 
 
 }
@@ -33,6 +35,8 @@ mostrarOpcionResumen = function () {
     ocultarComponente("divEmpleado");
     ocultarComponente("divRol");
 
+    mostrarRoles();
+    mostrarTotales();
 }
 
 mostrarEmpleados = function () {
@@ -305,6 +309,57 @@ guardarRol = function () {
     // 7. Deshabilitar botón GUARDAR
     deshabilitarComponente("btnGuardarRol");
 }
+
+
+mostrarRoles = function () {
+
+    let tabla = "<table border='1'>" +
+        "<tr>" +
+        "<th>CEDULA</th>" +
+        "<th>NOMBRE</th>" +
+        "<th>VALOR A PAGAR</th>" +
+        "<th>APORTE EMPLEADO</th>" +
+        "<th>APORTE EMPLEADOR</th>" +
+        "</tr>";
+
+    for (let i = 0; i < roles.length; i++) {
+        tabla +=
+            "<tr>" +
+            "<td>" + roles[i].cedula + "</td>" +
+            "<td>" + roles[i].nombre + "</td>" +
+            "<td>" + roles[i].valorAPagar + "</td>" +
+            "<td>" + roles[i].aporteEmpleado + "</td>" +
+            "<td>" + roles[i].aporteEmpleador + "</td>" +
+            "</tr>";
+    }
+
+    tabla += "</table>";
+
+    document.getElementById("tablaResumen").innerHTML = tabla;
+}
+
+
+
+mostrarTotales = function () {
+
+    let totalEmpleado = 0;
+    let totalEmpleador = 0;
+    let totalAPagar = 0;
+
+    for (let i = 0; i < roles.length; i++) {
+        totalEmpleado += roles[i].aporteEmpleado;
+        totalEmpleador += roles[i].aporteEmpleador;
+        totalAPagar += roles[i].valorAPagar;
+    }
+
+    let totalNomina = totalEmpleado + totalEmpleador + totalAPagar;
+
+    mostrarTexto("infoTotalPago", totalAPagar.toFixed(2));
+    mostrarTexto("infoAporteEmpresa", totalEmpleador.toFixed(2));
+    mostrarTexto("infoAporteEmpleado", totalEmpleado.toFixed(2));
+    mostrarTexto("totalNomina", totalNomina.toFixed(2));
+}
+
 
 
 

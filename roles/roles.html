@@ -15,7 +15,7 @@
             <input type="button" value="EMPLEADO" class="estiloBoton" onclick="mostrarOpcionEmpleado();" />
         </div>
         <div class="contenedorBoton">
-            <input type="button" value="ROL" class="estiloBoton" onclick="mostrarOpcionRol();"/>
+            <input type="button" value="ROL" class="estiloBoton" onclick="mostrarOpcionRol();" />
         </div>
         <div class="contenedorBoton">
             <input type="button" value="RESUMEN" class="estiloBoton" onclick="mostrarOpcionResumen();" />
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="contenedorBoton">
-                    <input type="button" value="BUSCAR" class="estiloBoton" onclick="ejecutarBusqueda();"/>
+                    <input type="button" value="BUSCAR" class="estiloBoton" onclick="ejecutarBusqueda();" />
                 </div>
             </div>
 
@@ -81,7 +81,7 @@
                         <input type="button" value="NUEVO" class="estiloBoton" onclick="ejecutarNuevo();" />
                     </div>
                     <div class="contenedorBoton">
-                        <input type="button" value="GUARDAR" class="estiloBoton" id="btnGuardar"  onclick="guardar();"/>
+                        <input type="button" value="GUARDAR" class="estiloBoton" id="btnGuardar" onclick="guardar();" />
                     </div>
                     <div class="contenedorBoton">
                         <input type="button" value="LIMPIAR" class="estiloBoton" onclick="limpiar();" />
@@ -149,7 +149,7 @@
                 </div>
                 <div class="botones">
                     <div class="contenedorBoton">
-                        <input type="button" value="CALCULAR" class="estiloBoton" onclick="calcularRol()"/>
+                        <input type="button" value="CALCULAR" class="estiloBoton" onclick="calcularRol()" />
                     </div>
                 </div>
                 <div class="ingresoDatos">
@@ -167,10 +167,11 @@
                     <div>
                         <div class="info" id="infoPago">0.0</div>
                     </div>
+
                 </div>
                 <div class="botones">
                     <div class="contenedorBoton">
-                        <input type="button" value="GUARDAR" class="estiloBoton" />
+                        <input type="button" value="GUARDAR" class="estiloBoton" id="btnGuardarRol"  onclick="guardarRol();" />
                     </div>
                 </div>
             </div>
@@ -181,43 +182,52 @@
     </div>
     <div id="divResumen">
         <div class="principal">
-            <div class="area">
-              
-            </div>
-            <div class="area">
-                <div id="tablaResumen" class="areaTabla">
 
-                </div>
+            <div class="area">
+               
+            </div>
+
+            <div class="area">
+
+                <div id="tablaResumen" class="areaTabla"></div>
+
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        TOTAL A PAGAR
-                    </div>
+                    <div class="tituloCampo">TOTAL A PAGAR</div>
                     <div>
                         <div class="info" id="infoTotalPago">0.0</div>
                     </div>
                 </div>
+
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        APORTE EMPRESA
-                    </div>
+                    <div class="tituloCampo">APORTE EMPRESA</div>
                     <div>
                         <div class="info" id="infoAporteEmpresa">0.0</div>
                     </div>
                 </div>
+
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        APORTE EMPLEADO
-                    </div>
+                    <div class="tituloCampo">APORTE EMPLEADO</div>
                     <div>
                         <div class="info" id="infoAporteEmpleado">0.0</div>
                     </div>
                 </div>
+
+                <div class="ingresoDatos">
+                    <div class="tituloCampo">TOTAL NÓMINA</div>
+                    <div>
+                        <div class="info" id="totalNomina">0.0</div>
+                    </div>
+                </div>
+
             </div>
+
             <div class="logoEscuela">
                 <img src="./imagenes/resumen.png" width="80%" />
             </div>
+
         </div>
     </div>
+
 </body>
 
 </html>
