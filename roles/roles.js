@@ -1,4 +1,4 @@
-let esNuevo= false;
+let esNuevo = false;
 
 let empleados = [
     { cedula: "1714616123", nombre: "John", apellido: "Cena", sueldo: 500.0 },
@@ -30,7 +30,7 @@ mostrarOpcionResumen = function () {
 
 }
 
-mostrarEmpleados= function() {
+mostrarEmpleados = function () {
 
     let cmpTabla = document.getElementById("tablaEmpleados");
 
@@ -79,9 +79,9 @@ ejecutarNuevo = function () {
     esNuevo = true;
 }
 
-buscarEmpleado=function(cedula){
-    for (let i=0; i<empleados.length;i++){
-        if (empleados[i].cedula=== cedula){
+buscarEmpleado = function (cedula) {
+    for (let i = 0; i < empleados.length; i++) {
+        if (empleados[i].cedula === cedula) {
             return empleados[i];
 
         }
@@ -167,6 +167,20 @@ guardar = function () {
             alert("Ya existe un empleado con esa cédula");
         }
     }
+
+    if (agregarEmpleado(empleado)) {
+
+        alert("Empleado guardado correctamente");
+
+        mostrarEmpleados();  
+        limpiar();           
+        deshabilitarFormularioEmpleado();
+        esNuevo = false;
+
+    } else {
+        alert("La cédula ya existe");
+    }
+
 }
 
 
