@@ -196,5 +196,21 @@ limpiar = function () {
     deshabilitarFormularioEmpleado();
 }
 
+buscarPorRol = function () {
+
+    let cedula = document.getElementById("txtBusquedaCedulaRol").value;
+
+    let empleado = buscarEmpleado(cedula);
+
+    if (empleado == null) {
+        alert("EMPLEADO NO EXISTE");
+        return;
+    }
+
+    document.getElementById("infoCedula").innerText = empleado.cedula;
+    document.getElementById("infoNombre").innerText = empleado.nombre + " " + empleado.apellido;
+    document.getElementById("infoSueldo").innerText = empleado.sueldo;
+}
+
 
 
