@@ -107,80 +107,94 @@ guardar = function () {
     let cedula = document.getElementById("txtCedula").value;
     let nombre = document.getElementById("txtNombre").value;
     let apellido = document.getElementById("txtApellido").value;
-    let sueldoTexto = document.getElementById("txtSueldo").value;
+    let sueldo = parseFloat(document.getElementById("txtSueldo").value);
 
-    let sueldo = parseFloat(sueldoTexto);
-
-    // CÉDULA OBLIGATORIA
-    if (cedula == "") {
-        document.getElementById("lblErrorCedula").innerText = "La cedula es obligatoria";
-        return;
-    } else {
-        document.getElementById("lblErrorCedula").innerText = "";
-    }
-
-    // NOMBRE OBLIGATORIO
-    if (nombre == "") {
-        document.getElementById("lblErrorNombre").innerText = "El nombre es obligatorio";
-        return;
-    } else {
-        document.getElementById("lblErrorNombre").innerText = "";
-    }
-
-    // APELLIDO OBLIGATORIO
-    if (apellido == "") {
-        document.getElementById("lblErrorApellido").innerText = "El apellido es obligatorio";
-        return;
-    } else {
-        document.getElementById("lblErrorApellido").innerText = "";
-    }
-
-    // SUELDO OBLIGATORIO
-    if (sueldoTexto == "") {
-        document.getElementById("lblErrorSueldo").innerText = "El sueldo es obligatorio";
-        return;
-    } else {
-        document.getElementById("lblErrorSueldo").innerText = "";
-    }
-
-    // VALIDAR SUELDO
-    if (isNaN(sueldo) || sueldo < 400 || sueldo > 5000) {
-        document.getElementById("lblErrorSueldo").innerText = "Sueldo invalido";
+    // VALIDAR CAMPOS OBLIGATORIOS
+    if (cedula == "" || nombre == "" || apellido == "" || isNaN(sueldo)) {
+        alert("Todos los campos son obligatorios");
         return;
     }
 
-    // GUARDAR
+    // 🔵 CREAR EMPLEADO NUEVO
     if (esNuevo) {
-        let empleado = {};
-        empleado.cedula = cedula;
+
+        let empleado = {
+            cedula: cedula,
+            nombre: nombre,
+            apellido: apellido,
+            sueldo: sueldo
+        };
+
+        if (!agregarEmpleado(empleado)) {
+            alert("La cédula ya existe");
+            return;
+        }
+
+        alert("Empleado guardado correctamente");
+    }
+    // 🟢 MODIFICAR EMPLEADO EXISTENTE
+    else {
+
+        let empleado = buscarEmpleado(cedula);
+
         empleado.nombre = nombre;
         empleado.apellido = apellido;
         empleado.sueldo = sueldo;
 
-        let agregado = agregarEmpleado(empleado);
-
-        if (agregado) {
-            alert("Empleado guardado correctamente");
-            mostrarEmpleados();
-            deshabilitarFormularioEmpleado();
-        } else {
-            alert("Ya existe un empleado con esa cédula");
-        }
+        alert("EMPLEADO MODIFICADO EXITOSAMENTE");
     }
 
-    if (agregarEmpleado(empleado)) {
+    mostrarEmpleados();
 
-        alert("Empleado guardado correctamente");
+    // Deshabilitar campos y botón guardar
+    deshabilitarFormularioEmpleado();
 
-        mostrarEmpleados();  
-        limpiar();           
-        deshabilitarFormularioEmpleado();
-        esNuevo = false;
-
-    } else {
-        alert("La cédula ya existe");
-    }
-
+    esNuevo = false;
 }
+
+
+
+ejecutarBusqueda = function () {
+
+    let cedulaBusqueda = document.getElementById("txtBusquedaCedula").value;
+
+    let empleado = buscarEmpleado(cedulaBusqueda);
+
+    if (empleado == null) {
+        alert("EMPLEADO NO EXISTE");
+        return;
+    }
+
+    // Mostrar datos del empleado
+    document.getElementById("txtCedula").value = empleado.cedula;
+    document.getElementById("txtNombre").value = empleado.nombre;
+    document.getElementById("txtApellido").value = empleado.apellido;
+    document.getElementById("txtSueldo").value = empleado.sueldo;
+
+    // Habilitar campos que se pueden modificar
+    habilitarComponente("txtNombre");
+    habilitarComponente("txtApellido");
+    habilitarComponente("txtSueldo");
+    habilitarComponente("btnGuardar");
+
+    // Deshabilitar cédula
+    deshabilitarComponente("txtCedula");
+
+    // No es nuevo, es modificación
+    esNuevo = false;
+}
+
+limpiar = function () {
+
+    document.getElementById("txtCedula").value = "";
+    document.getElementById("txtNombre").value = "";
+    document.getElementById("txtApellido").value = "";
+    document.getElementById("txtSueldo").value = "";
+
+    esNuevo = false;
+
+    deshabilitarFormularioEmpleado();
+}
+
 
 
